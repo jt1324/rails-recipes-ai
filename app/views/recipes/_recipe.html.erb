@@ -1,0 +1,18 @@
+<div id="<%= dom_id recipe %>" class="recipe-card">
+  <h3>
+    <strong>Name:</strong>
+    <%= recipe.name %>
+  </h3>
+
+  <p>
+    <strong>Ingredients:</strong>
+    <%= recipe.ingredients %>
+  </p>
+
+  <p class="mb-4">
+    <%= recipe.content %>
+  </p>
+
+  <%= cl_image_tag recipe.photo.key, alt: "AI-generated image of the recipe", class: "recipe-photo" if recipe.photo.attached? %>
+
+</div>

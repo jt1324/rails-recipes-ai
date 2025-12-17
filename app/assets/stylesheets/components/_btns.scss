@@ -1,0 +1,100 @@
+.destroy {
+  border-radius: 3px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  color: white;
+  font-weight: bold;
+  background-color: #941002;
+  border: none;
+}
+
+.edit {
+  border-radius: 3px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  font-weight: bold;
+  background-color: #007bff;
+  border: none;
+}
+
+.back{
+  border-radius: 3px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  font-weight: bold;
+  background-color: #6c757d;
+  border: none;
+}
+
+.destroy:hover {
+  color: rgb(255, 255, 255);
+}
+
+.recipe-photo {
+  height: 500px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.new {
+  border-radius: 3px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  font-weight: bold;
+  background-color: #034d14;
+  border: none;
+  color: white;
+}
+
+.new:hover {
+  background-color: #02ac13;
+}
+
+.recipes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+
+}
+
+.recipe-card {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  border: none;
+  padding: 20px;
+  border-radius: 5px;
+  background-color: white;
+}
+
+.show {
+  border-radius: 3px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  font-weight: bold;
+  border: none;
+  margin-top: -10px;
+}
+
+.show:hover {
+  background-color: #003cff;
+}
+
+.update {
+  box-shadow: 0 2px 5px rgba(95, 94, 0, 0.2);
+  border: none;
+  border-radius: 5px;
+  background-color: rgb(238, 188, 26);
+  font-weight: bold;
+}
+
+.update:hover {
+  background-color: rgb(255, 213, 64);
+  color: black;
+  font-weight: bold;
+}
+
+.show1 {
+  border-radius: 3px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  font-weight: bold;
+  border: none;
+
+}
+
+.show1:hover {
+  background-color: #003cff;
+}

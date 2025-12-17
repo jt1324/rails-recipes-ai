@@ -1,0 +1,11 @@
+<div class="container">
+  <h1 class="mt-4">New recipe</h1>
+
+  <%= render "form", recipe: @recipe %>
+
+  <br>
+
+  <div>
+    <%= link_to "Back to recipes", recipes_path, class: "btn btn-secondary" %>
+  </div>
+</div>
