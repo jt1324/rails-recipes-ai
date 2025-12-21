@@ -13,6 +13,9 @@
     <%= recipe.content %>
   </p>
 
-  <%= cl_image_tag recipe.photo.key, alt: "AI-generated image of the recipe", class: "recipe-photo" if recipe.photo.attached? %>
+  <div class="img_logo">
+    <p><%= cl_image_tag recipe.photo.key, alt: "AI-generated image of the recipe", class: "recipe-photo" if recipe.photo.attached? %></p>
+    <p><%= image_tag "logo_AI.png", class: "card-logo" %></p>
+  </div>
 
 </div>
