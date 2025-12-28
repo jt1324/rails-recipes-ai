@@ -1,13 +1,12 @@
 require "open-uri"
 
 class Recipe < ApplicationRecord
-
-after_save if: -> { saved_change_to_name? || saved_change_to_ingredients? } do
-  set_content
-  set_photo
-end
-
   has_one_attached :photo
+  after_save if: -> { saved_change_to_name? || saved_change_to_ingredients? } do
+    set_content
+    set_photo
+  end
+
 
   def content
     if super.blank?
@@ -16,6 +15,8 @@ end
       super
     end
   end
+
+  private
 
   def set_content
     client = OpenAI::Client.new(access_token: ENV.fetch("OPENAI_ACCESS_TOKEN"))
@@ -27,9 +28,10 @@ end
 
     update(content: new_content)
     return new_content
+    # RecipeContentJob.perform_later(self)
   end
 
-  private
+
 
   def set_photo
     client = OpenAI::Client.new(access_token: ENV.fetch("OPENAI_ACCESS_TOKEN"))
