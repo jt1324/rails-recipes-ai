@@ -315,6 +315,10 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 4.0)
       websocket (~> 1.0)
+    solid_cache (0.7.0)
+      activejob (>= 7)
+      activerecord (>= 7)
+      railties (>= 7)
     solid_queue (1.2.4)
       activejob (>= 7.1)
       activerecord (>= 7.1)
@@ -389,6 +393,7 @@ DEPENDENCIES
   sassc-rails
   selenium-webdriver
   simple_form!
+  solid_cache
   solid_queue
   sprockets-rails
   stimulus-rails
