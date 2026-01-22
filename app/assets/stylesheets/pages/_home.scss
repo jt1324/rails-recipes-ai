@@ -1,1 +1,11 @@
 // Specific CSS for your home-page
+.logo_container {
+  display: flex;
+  justify-content: center; // Center the logo horizontally
+  width: 100%;
+}
+
+.home-logo {
+  width: 40%;
+  margin-bottom: 20px;
+}
