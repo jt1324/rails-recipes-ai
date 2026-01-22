@@ -46,7 +46,7 @@ class Recipe < ApplicationRecord
       response = client.images.generate(
         parameters: {
           model: "gpt-image-1",
-          prompt: "A recipe image of #{name}",
+          prompt: "A realistic recipe image of #{name} without any text",
           size: "1024x1024",
           n: 1
         }

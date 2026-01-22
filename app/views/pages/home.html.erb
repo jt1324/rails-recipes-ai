@@ -1,2 +1,15 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="container mt-5">
+  <div>
+    <h1>Welcome to AI Recipes</h1>
+    <p>Here, you can explore a list of delicious recipes and even ask our AI cheff to create one fo ryou, using the ingredients you love most or already have on hand!</p>
+  </div>
+  <div>
+    <%= link_to "Recipes", recipes_path, class: "btn btn-primary" %>
+  </div>
+  <div>
+    <%= link_to "Create your recipes", new_recipe_path, class: "btn btn-primary mt-4" %>
+  </div>
+  <div>
+    <%= image_tag "logo_AI.png", class: "home-logo" %>
+  </div>
+</div>
