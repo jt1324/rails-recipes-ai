@@ -24,3 +24,4 @@ class AiGenerationWorker
     recipe.update(status: 'failed')
     raise e
   end
+end
