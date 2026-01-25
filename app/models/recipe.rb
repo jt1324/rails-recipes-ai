@@ -2,10 +2,10 @@ require "open-uri"
 
 class Recipe < ApplicationRecord
   has_one_attached :photo
-  after_save if: -> { saved_change_to_name? || saved_change_to_ingredients? } do
-    set_content
-    set_photo
-  end
+  # after_save if: -> { saved_change_to_name? || saved_change_to_ingredients? } do
+  #   set_content
+  #   set_photo
+  # end
 
 
   def content
