@@ -7,15 +7,13 @@ class Recipe < ApplicationRecord
   #   set_photo
   # end
 
-
-  #
-
   def generate_ai_content!
     # Your OpenAI API call here
-    generated_content = call_openai_api
+    generated_content = set_content
 
-    # Save it to the database
-    update_column(:content, generated_content)
+    # set_content already updates the database, so we're done
+    # But let's also generate the photo
+    set_photo
   end
 
 
@@ -96,19 +94,5 @@ class Recipe < ApplicationRecord
 
     photo
   end
-
-
-
-    # response = client.images.generate(parameters: {
-    #   prompt: "A recipe image of #{name}", size: "1024x1024"
-    # })
-
-    # url = response["data"][0]["url"]
-    # file =  URI.parse(url).open
-
-    # photo.purge if photo.attached?
-    # photo.attach(io: file, filename: "ai_generated_image.png", content_type: "image/png")
-    # return photo
-  # end
 
 end

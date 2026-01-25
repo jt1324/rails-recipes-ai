@@ -28,8 +28,8 @@ class RecipesController < ApplicationController
     if @recipe.save
       # Queue the background job
       AiGenerationWorker.perform_async(@recipe.id)
-      redirect_to processing_recipe_path(@recipe),
-                notice: "Generating your recipe with AI... this may take a moment!"
+      redirect_to recipes_path,
+      notice: "Recipe is being generated! Refresh in a moment to see it."
     else
       render :new, status: :unprocessable_entity
     end
