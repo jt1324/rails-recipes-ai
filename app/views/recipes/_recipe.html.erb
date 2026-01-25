@@ -10,7 +10,11 @@
   </p>
 
   <p class="mb-4">
-    <%= recipe.content %>
+    <% if recipe.content.present? %>
+      <%= recipe.content %>
+    <% else %>
+      <em>🔄 Generating recipe content... Please refresh in a moment!</em>
+    <% end %>
   </p>
 
   <div class="img_logo">

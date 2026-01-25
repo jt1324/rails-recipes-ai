@@ -5,22 +5,15 @@ class AiGenerationWorker
   sidekiq_options retry: 5
 
   sidekiq_retry_in do |count|
-    15 * (count + 1) # 15s, 30s, 45s, 60s, 75s
+    20 * (count + 1) # 20s, 40s, 60s, 80s, 100s
   end
 
   def perform(recipe_id)
     recipe = Recipe.find(recipe_id)
-
-    # Call your AI generation method
-    recipe.set_content  # or recipe.generate_ai_content!
-    recipe.save!
+    recipe.generate_ai_content!
 
   rescue Faraday::TooManyRequestsError => e
-    Rails.logger.error "OpenAI rate limit for recipe #{recipe_id}"
-    # Sidekiq will automatically retry with backoff
-    raise e
-  rescue StandardError => e
-    Rails.logger.error "Error generating recipe #{recipe_id}: #{e.message}"
-    raise e
+    Rails.logger.error "OpenAI rate limit for recipe #{recipe_id}, will retry"
+    raise e # Sidekiq will retry with backoff
   end
 end

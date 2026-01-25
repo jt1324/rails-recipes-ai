@@ -8,11 +8,14 @@ class Recipe < ApplicationRecord
   # end
 
 
-  def content
-    if super.blank?
-      set_content
-    else
-      super
+  #
+
+    def generate_ai_content!
+      # Your OpenAI API call here
+      generated_content = call_openai_api
+
+      # Save it to the database
+      update_column(:content, generated_content)
     end
   end
 
