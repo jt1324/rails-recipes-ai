@@ -23,9 +23,13 @@ class RecipesController < ApplicationController
   # POST /recipes
   def create
     @recipe = Recipe.new(recipe_params)
+    @recipe.status = 'processing' # Add a status field
 
     if @recipe.save
-      redirect_to @recipe, notice: "Recipe was successfully created."
+      # Queue the background job
+      AiGenerationWorker.perform_async(@recipe.id)
+      redirect_to processing_recipe_path(@recipe),
+                notice: "Generating your recipe with AI... this may take a moment!"
     else
       render :new, status: :unprocessable_entity
     end

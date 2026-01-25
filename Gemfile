@@ -54,6 +54,8 @@ gem "sassc-rails"
 gem "cloudinary"
 gem "solid_queue"
 gem "solid_cache"
+gem 'sidekiq'
+gem 'redis'
 
 group :development, :test do
   gem "dotenv-rails"
