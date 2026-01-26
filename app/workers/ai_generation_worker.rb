@@ -1,26 +1,32 @@
-# app/workers/ai_generation_worker.rb
 class AiGenerationWorker
   include Sidekiq::Worker
 
-  sidekiq_options retry: 10  # More retries
+  sidekiq_options retry: 15
 
   sidekiq_retry_in do |count|
-    60 * (count + 1)  # Wait 60s, 120s, 180s, 240s, etc.
+    180 * (count + 1)  # 3min, 6min, 9min, 12min...
   end
 
   def perform(recipe_id)
+    sleep(30)  # Wait before starting
+
     recipe = Recipe.find(recipe_id)
 
-    # Add a small delay before even starting
-    sleep(2)
+    Rails.logger.info "Starting AI generation for recipe #{recipe_id}"
 
     recipe.generate_ai_content!
+    recipe.update(status: 'completed')
+
+    Rails.logger.info "✅ Successfully generated recipe #{recipe_id}"
 
   rescue Faraday::TooManyRequestsError => e
-    Rails.logger.error "OpenAI rate limit for recipe #{recipe_id}, will retry in #{60 * (retry_count + 1)} seconds"
+    recipe.update(status: 'rate_limited') if recipe
+    Rails.logger.error "⏸️ Rate limited for recipe #{recipe_id}"
     raise e
+
   rescue StandardError => e
-    Rails.logger.error "Error: #{e.message}"
+    recipe.update(status: 'failed') if recipe
+    Rails.logger.error "❌ Failed recipe #{recipe_id}: #{e.message}"
     raise e
   end
 end
